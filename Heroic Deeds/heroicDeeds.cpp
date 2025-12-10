@@ -30,7 +30,7 @@ int main() {
         cout << "6. Exit\n";
         cout << "Choose an option (1-6): ";
         cin >> choice;
-        cin.ignore();  // clear newline after reading the number
+        cin.ignore(); 
 
         switch(choice) {
             case 1:
@@ -69,7 +69,7 @@ void displayBanner() {
     cout << "========================================\n\n";
 }
 
-// Add a new heroic deed and its branch
+
 void addHeroicDeed(vector<string>& deeds, vector<string>& branches) {
     string branch;
     string deed;
@@ -81,7 +81,6 @@ void addHeroicDeed(vector<string>& deeds, vector<string>& branches) {
     cout << "Describe the heroic deed: ";
     getline(cin, deed);
 
-    // Store data in vectors
     if (branch.empty() || deed.empty()) {
         cout << "Branch and deed cannot be empty. Deed not added.\n";
         return;
@@ -93,23 +92,19 @@ void addHeroicDeed(vector<string>& deeds, vector<string>& branches) {
     cout << "Heroic deed added successfully!\n";
 }
 
-// Display all heroic deeds with their branches
 void displayDeeds(const vector<string>& deeds, const vector<string>& branches) {
     cout << "\n--- All Recorded Heroic Deeds ---\n";
 
-    // Check if vectors are empty
     if (deeds.empty()) {
         cout << "No heroic deeds have been recorded yet.\n";
         return;
     }
 
-    // Loop through vectors and print deeds with branch
     for (size_t i = 0; i < deeds.size(); ++i) {
         cout << i + 1 << ". [" << branches[i] << "] " << deeds[i] << "\n";
     }
 }
 
-// Show statistics about the deeds and branches
 void displayStatistics(const vector<string>& deeds, const vector<string>& branches) {
     cout << "\n--- Tribute Statistics ---\n";
 
@@ -118,19 +113,16 @@ void displayStatistics(const vector<string>& deeds, const vector<string>& branch
         return;
     }
 
-    // 1. Count total deeds
     int totalDeeds = static_cast<int>(deeds.size());
     cout << "Total number of heroic deeds recorded: " << totalDeeds << "\n";
 
-    // 2. Count deeds by branch using two vectors:
-    //    one for unique branch names, one for counts
+ 
     vector<string> uniqueBranches;
     vector<int> branchCounts;
 
     for (size_t i = 0; i < branches.size(); ++i) {
         string currentBranch = branches[i];
 
-        // Check if this branch is already in uniqueBranches
         bool found = false;
         for (size_t j = 0; j < uniqueBranches.size(); ++j) {
             if (uniqueBranches[j] == currentBranch) {
@@ -141,14 +133,12 @@ void displayStatistics(const vector<string>& deeds, const vector<string>& branch
             }
         }
 
-        // If not found, add it as a new branch with count 1
         if (!found) {
             uniqueBranches.push_back(currentBranch);
             branchCounts.push_back(1);
         }
     }
 
-    // 3. Display results
     cout << "\nDeeds by Service Branch:\n";
     for (size_t i = 0; i < uniqueBranches.size(); ++i) {
         cout << " - " << uniqueBranches[i] << ": " << branchCounts[i] << " deed(s)\n";
@@ -158,21 +148,20 @@ void displayStatistics(const vector<string>& deeds, const vector<string>& branch
          << uniqueBranches.size() << "\n";
 }
 
-// Create a simple patriotic pattern using symbols and loops
 void createPatrioticPattern() {
     int rows;
 
     cout << "\n--- Patriotic Pattern ---\n";
     cout << "Enter the number of rows for the pattern: ";
     cin >> rows;
-    cin.ignore();  // clear newline
+    cin.ignore();
 
     if (rows <= 0) {
         cout << "Number of rows must be positive.\n";
         return;
     }
 
-    // Use a simple triangle pattern
+
     // Cycle through symbols: ★, ●, ▲
     for (int i = 1; i <= rows; ++i) {
         for (int j = 1; j <= i; ++j) {
@@ -188,7 +177,6 @@ void createPatrioticPattern() {
     }
 }
 
-// Search heroic deeds by a specific branch
 void searchByBranch(const vector<string>& deeds, const vector<string>& branches) {
     cout << "\n--- Search Deeds by Branch ---\n";
 
